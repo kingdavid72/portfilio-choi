@@ -29,18 +29,27 @@ if there is others like server int the script section to run
 didn't fix
 
 ## Creat git repository
-https://github.com/kingdavid72/choiportfolio.git
+https://github.com/kingdavid72/portfilio-choi.git
 
 ## npm install gh-pages
 This installs GithHub gh-pages branch under the master branch
 so you have to creat repo and will be added to package.json
 
 ## Edit package.json to add hompage
+https://stackoverflow.com/questions/42686149/cant-build-create-react-app-project-with-custom-public-url
+
 Insert right after private
-"homepage": "https://github.com/kingdavid72/portfilio-choi.git",
-make sure comma { , , ,}
+"homepage": "https://github.com/portfilio-choi", make sure comma after it
+"https://github.com/kingdavid72/portfilio-choi"
+Here is the trick or bug on gh-pages or buil process
+if you add id, kingdavid72 then %PUBLIC_URL% will be replaced with 
+/kingdavid72/portfilio-choi instead of /portfilio-choi
+this will lead to failure to load all javascript files and css files
+what a nasty bug it is.....
+
 
 ## Edit script section
+"predeploy": "npm run build",
 "deploy": "gh-pages -d build"
 build directory will be created by npm run build command
 directory option for app directory to deploy
@@ -50,7 +59,7 @@ you don't want to push node_modues folder
 
 ## git init
 to initialize the folder. this will make .git hidden folder
-Reinitialized existing Git repository in E:/Code_snips/02-profilewebsite/portfolio/.git/
+Reinitialized existing Git repository in 
 
 ## Git golobal setup
 git config --global user.email jaemunc@gmail.com
@@ -73,10 +82,11 @@ git push -u origin master
 meaning push with recording flag (-u) to remote server called origin given by GitHub server
 into master branch.
 
-## npm run build
-For React application nodejs will creat /build directory and it must be built before deploy
-or one can add "npm run build && gh-pages -d build" in this case one can directly go to 
-deploy command skkipping this step
+## Skip npm run build
+https://www.pluralsight.com/guides/how-to-create-react-application-and-deploy-on-github-pages
+https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
+For React application nodejs will creat /build directory  
+in this process, deploy to push to origin gh-pages
 
 ## npm run deploy
 This command will make gh-pages under master branch
